@@ -102,10 +102,14 @@
             }
         }
 
-        history.replaceState(null, null, location.href);
+        function preventBack() {
+        history.pushState(null, null, location.href);
+    }
+
+    // 뒤로 가기 시 강제 복귀 + 경고 메시지
         window.onpopstate = function () {
-            history.replaceState(null, null, location.href);
-            alert("이전 페이지로 이동할 수 없습니다!");
+            preventBack();
+            alert("뒤로 가기가 제한되어 있습니다!");
     };
     </script>   
 </body>
